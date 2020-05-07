@@ -48,29 +48,22 @@ function notAutorized() {
 
   function logIn(event) {
     event.preventDefault(); // отменяем перезагрузку страницы
-    login = loginInput.value; // получаем введенный логин и сохраняем в перменную
-    localStorage.setItem('gloDelivery', login); //добавить свойство со значением для хранения логина
-    console.log("логин: ",loginInput.value);
-    toggleModalAuth(); // очищаем поля ввода
-
-
-      if (loginInput.value == "") {
-      console.log('пусто поле');
-      
-      loginInput.style.borderColor = "red";
-      logInForm.addEventListener("submit", logIn);
-  
-    } else {
+   
+    if (loginInput.value) {
+      login = loginInput.value; // получаем введенный логин и сохраняем в перменную
+      localStorage.setItem('gloDelivery', login); //добавить свойство со значением для хранения логина
+      console.log("логин: ",loginInput.value);
+      toggleModalAuth(); // очищаем поля ввода
       buttonAuth.removeEventListener("click", toggleModalAuth);
       closeAuth.removeEventListener("click", toggleModalAuth);
       logInForm.removeEventListener("submit", logIn);
-    }
-
-
-    
-    logInForm.reset(); //очистить поле логин
-    checkAuth(); // проверка авторизации пользователя
+      logInForm.reset(); //очистить поле логин  
+      checkAuth(); // проверка авторизации пользователя
   }
+    } else {
+      loginInput.style.borderColor = "red";
+    }
+    
   buttonAuth.addEventListener("click", toggleModalAuth);
   closeAuth.addEventListener("click", toggleModalAuth);
   logInForm.addEventListener("submit", logIn);
