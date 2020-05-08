@@ -18,6 +18,16 @@ const cardsMenu = document.querySelector(".cards-menu");
 
 let login = localStorage.getItem("gloDelivery");
 
+const valid = function (str) {
+  const nameReg = /^[A-Za-z ][A-Za-z0-9- \.]{1,20}$/;
+  if (nameReg.test(str)) {
+    if (str.length > 20) {
+      console.log("длинная");
+    }
+    
+  }
+  return nameReg.test(str);
+}
 function toggleModal() {
   modal.classList.toggle("is-open");
 }
@@ -167,5 +177,15 @@ logo.addEventListener("click", function () {
   restaurants.classList.remove("hide");
   menu.classList.add("hide");
 });
+
+new Swiper(".container-promo", {
+  loop: true,
+  autoplay: {
+    delay: 3000,
+  },
+  slidePerView: 1,
+  sliderPerColumn: 1,
+});
+
 
 //формат текста shift+alt+F
