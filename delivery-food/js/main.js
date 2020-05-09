@@ -139,7 +139,7 @@ function createCardGood(goods) {
   card.className = "card";
   card.insertAdjacentHTML(
     "beforeend",
-    `<img src="img/pizza-plus/pizza-classic.jpg" alt="${image}" class="card-image"/>
+    `<img src="${image}" alt="${image}" class="card-image"/>
   <div class="card-text">
     <div class="card-heading">
       <h3 class="card-title card-title-reg">${name}</h3>
@@ -173,7 +173,7 @@ function openGoods(event) {
       getData(`./db/${restaurant.dataset.products}`).then(function (data) {
         data.forEach(createCardGood);
       });
-      
+
     } else {
       toggleModalAuth();
     }
