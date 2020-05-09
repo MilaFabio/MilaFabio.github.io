@@ -133,19 +133,19 @@ function createCardRestaurant(restaurant) {
   cardsRestaurants.insertAdjacentHTML("beforeend", card);
 }
 
-function createCardGood() {
+function createCardGood(goods) {
+  const { id, name, description, price, image } = goods;
   const card = document.createElement("div");
   card.className = "card";
   card.insertAdjacentHTML(
     "beforeend",
-    `<img src="img/pizza-plus/pizza-classic.jpg" alt="image" class="card-image"/>
+    `<img src="img/pizza-plus/pizza-classic.jpg" alt="${image}" class="card-image"/>
   <div class="card-text">
     <div class="card-heading">
-      <h3 class="card-title card-title-reg">Пицца Классика</h3>
+      <h3 class="card-title card-title-reg">${name}</h3>
     </div>
     <div class="card-info">
-      <div class="ingredients">Соус томатный, сыр «Моцарелла», сыр «Пармезан», ветчина, салями,
-        грибы.
+      <div class="ingredients">${description}
       </div>
     </div>
     <div class="card-buttons">
@@ -153,7 +153,7 @@ function createCardGood() {
         <span class="button-card-text">В корзину</span>
         <span class="button-cart-svg"></span>
       </button>
-      <strong class="card-price-bold">510 ₽</strong>
+      <strong class="card-price-bold">${price} ₽</strong>
     </div>
   </div>`
   );
@@ -173,8 +173,7 @@ function openGoods(event) {
       getData(`./db/${restaurant.dataset.products}`).then(function (data) {
         data.forEach(createCardGood);
       });
-
-      createCardGood();
+      
     } else {
       toggleModalAuth();
     }
