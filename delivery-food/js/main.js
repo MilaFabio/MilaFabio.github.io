@@ -18,6 +18,8 @@ const cardsMenu = document.querySelector(".cards-menu");
 
 let login = localStorage.getItem("gloDelivery");
 
+const cart = [];
+
 const getData = async function (url) {
   const response = await fetch(url);
   if (!response.ok) {
@@ -56,13 +58,15 @@ function autorized() {
     buttonAuth.style.display = "";
     userName.style.display = "";
     buttonOut.style.display = "";
+    cartButton.style.display = "";
     buttonOut.removeEventListener("click", logOut);
   }
   console.log("Авторизован:", login);
   userName.textContent = login;
   buttonAuth.style.display = "none";
   userName.style.display = "inline";
-  buttonOut.style.display = "block";
+  buttonOut.style.display = "flex";
+  cartButton.style.display = "flex";
   buttonOut.addEventListener("click", logOut);
 }
 
@@ -100,16 +104,24 @@ function checkAuth() {
   }
 }
 
-function createCardRestaurant(restaurant) {
-  const {
-    image,
-    kitchen,
-    name,
-    price,
-    products,
-    stars,
-    time_of_delivery,
-  } = restaurant;
+function createCardRestaurant({
+  image,
+  kitchen,
+  name,
+  price,
+  products,
+  stars,
+  time_of_delivery,
+}) {
+  // const {
+  //   image,
+  //   kitchen,
+  //   name,
+  //   price,
+  //   products,
+  //   stars,
+  //   time_of_delivery,
+  // } = restaurant;
 
   const card = `
   <a class="card card-restaurant" data-products="${products}">
@@ -133,8 +145,8 @@ function createCardRestaurant(restaurant) {
   cardsRestaurants.insertAdjacentHTML("beforeend", card);
 }
 
-function createCardGood(goods) {
-  const { id, name, description, price, image } = goods;
+function createCardGood({ id, name, description, price, image }) {
+  //const { id, name, description, price, image } = goods;
   const card = document.createElement("div");
   card.className = "card";
   card.insertAdjacentHTML(
@@ -149,11 +161,11 @@ function createCardGood(goods) {
       </div>
     </div>
     <div class="card-buttons">
-      <button class="button button-primary button-add-cart">
+      <button class="button button-primary button-add-cart" id="${id}">
         <span class="button-card-text">В корзину</span>
         <span class="button-cart-svg"></span>
       </button>
-      <strong class="card-price-bold">${price} ₽</strong>
+      <strong class="card-price card-price-bold">${price} ₽</strong>
     </div>
   </div>`
   );
@@ -173,11 +185,28 @@ function openGoods(event) {
       getData(`./db/${restaurant.dataset.products}`).then(function (data) {
         data.forEach(createCardGood);
       });
-
     } else {
       toggleModalAuth();
     }
   }
+}
+
+function addToCart(event) {
+  const target = event.target;
+  const buttonAddToCart = target.closest(".button-add-cart");
+  if (buttonAddToCart) {
+    const card = target.closest(".card");
+    const title = card.querySelector(".card-title-reg");
+    const cost = card.querySelector(".card-price");
+    const id = buttonAddToCart.id;
+    cart.push({
+      id: id,
+      cart: cart,
+      title: title,
+      cost: cost,
+    });
+  }
+  console.log(cart);
 }
 
 function init() {
@@ -188,6 +217,7 @@ function init() {
   checkAuth();
 
   cartButton.addEventListener("click", toggleModal);
+  cardsMenu.addEventListener("click", addToCart);
   close.addEventListener("click", toggleModal);
   cardsRestaurants.addEventListener("click", openGoods);
   logo.addEventListener("click", function () {
