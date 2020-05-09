@@ -18,15 +18,14 @@ const cardsMenu = document.querySelector(".cards-menu");
 
 let login = localStorage.getItem("gloDelivery");
 
-const getData = async function(url){
+const getData = async function (url) {
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error(`Ошибка по адресу ${url}, 
     статус ошибки ${response.status}`);
   }
   return await response.json();
-}; 
-
+};
 
 const valid = function (str) {
   const nameReg = /^[A-Za-z ][A-Za-z0-9- \.]{1,20}$/;
@@ -34,14 +33,13 @@ const valid = function (str) {
     if (str.length > 20) {
       console.log("длинная");
     }
-    
   }
   return nameReg.test(str);
 };
 
-const toggleModal = function() {
+const toggleModal = function () {
   modal.classList.toggle("is-open");
-}; 
+};
 
 /** очищаем поля ввода */
 
@@ -103,11 +101,18 @@ function checkAuth() {
 }
 
 function createCardRestaurant(restaurant) {
+  const {
+    image,
+    kitchen,
+    name,
+    price,
+    products,
+    stars,
+    time_of_delivery,
+  } = restaurant;
 
-  const {image, kitchen,name,price,products,stars,time_of_delivery} = restaurant;
- 
   const card = `
-  <a class="card card-restaurant">
+  <a class="card card-restaurant" data-products="${products}">
   <img src="${image}" alt="${name}" class="card-image"/>
   <div class="card-text">
     <div class="card-heading">
@@ -165,9 +170,10 @@ function openGoods(event) {
       restaurants.classList.add("hide");
       menu.classList.remove("hide");
 
-      createCardGood();
-      createCardGood();
-      createCardGood();
+      getData(`./db/${restaurant.dataset.products}`).then(function (data) {
+        data.forEach(createCardGood);
+      });
+
       createCardGood();
     } else {
       toggleModalAuth();
@@ -176,13 +182,12 @@ function openGoods(event) {
 }
 
 function init() {
-  getData('./db/partners.json').then(function(data){
-    console.log(data);
-    data.forEach(createCardRestaurant)
+  getData("./db/partners.json").then(function (data) {
+    data.forEach(createCardRestaurant);
   });
-  
+
   checkAuth();
-  
+
   cartButton.addEventListener("click", toggleModal);
   close.addEventListener("click", toggleModal);
   cardsRestaurants.addEventListener("click", openGoods);
@@ -191,7 +196,7 @@ function init() {
     restaurants.classList.remove("hide");
     menu.classList.add("hide");
   });
-  
+
   new Swiper(".container-promo", {
     loop: true,
     autoplay: {
@@ -204,5 +209,3 @@ function init() {
 
 init();
 //формат текста shift+alt+F
-
-
