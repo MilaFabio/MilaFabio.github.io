@@ -18,19 +18,30 @@ const cardsMenu = document.querySelector(".cards-menu");
 
 let login = localStorage.getItem("gloDelivery");
 
+const getData = async function(url){
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Ошибка по адресу ${url}, 
+    статус ошибки ${response.status}`);
+  }
+  return await response.json();
+}; 
+
+
 const valid = function (str) {
   const nameReg = /^[A-Za-z ][A-Za-z0-9- \.]{1,20}$/;
-  if (nameReg.test(str)) {
+  if (!nameReg.test(str)) {
     if (str.length > 20) {
       console.log("длинная");
     }
     
   }
   return nameReg.test(str);
-}
-function toggleModal() {
+};
+
+const toggleModal = function() {
   modal.classList.toggle("is-open");
-}
+}; 
 
 /** очищаем поля ввода */
 
@@ -63,7 +74,7 @@ function notAutorized() {
   function logIn(event) {
     event.preventDefault(); // отменяем перезагрузку страницы
 
-    if (loginInput.value) {
+    if (valid(loginInput.value)) {
       login = loginInput.value; // получаем введенный логин и сохраняем в перменную
       localStorage.setItem("gloDelivery", login); //добавить свойство со значением для хранения логина
       console.log("логин: ", loginInput.value);
@@ -91,22 +102,24 @@ function checkAuth() {
   }
 }
 
-function createCardRestaurant() {
+function createCardRestaurant(restaurant) {
+
+  const {image, kitchen,name,price,products,stars,time_of_delivery} = restaurant;
+ 
   const card = `
   <a class="card card-restaurant">
-  <img src="img/tanuki/preview.jpg" alt="image" class="card-image"/>
+  <img src="${image}" alt="${name}" class="card-image"/>
   <div class="card-text">
     <div class="card-heading">
-      <h3 class="card-title">Тануки</h3>
-      <span class="card-tag tag">60 мин</span>
+      <h3 class="card-title">${name}</h3>
+      <span class="card-tag tag">${time_of_delivery} мин</span>
     </div>
-    <!-- /.card-heading -->
     <div class="card-info">
       <div class="rating">
-        4.5
+        ${stars}
       </div>
-      <div class="price">От 1 200 ₽</div>
-      <div class="category">Суши, роллы</div>
+      <div class="price">От ${price} ₽</div>
+      <div class="category">${kitchen}</div>
     </div>
   </div>
 </a>
@@ -162,30 +175,34 @@ function openGoods(event) {
   }
 }
 
-checkAuth();
+function init() {
+  getData('./db/partners.json').then(function(data){
+    console.log(data);
+    data.forEach(createCardRestaurant)
+  });
+  
+  checkAuth();
+  
+  cartButton.addEventListener("click", toggleModal);
+  close.addEventListener("click", toggleModal);
+  cardsRestaurants.addEventListener("click", openGoods);
+  logo.addEventListener("click", function () {
+    containerPromo.classList.remove("hide");
+    restaurants.classList.remove("hide");
+    menu.classList.add("hide");
+  });
+  
+  new Swiper(".container-promo", {
+    loop: true,
+    autoplay: {
+      delay: 3000,
+    },
+    slidePerView: 1,
+    sliderPerColumn: 1,
+  });
+}
 
-createCardRestaurant();
-createCardRestaurant();
-createCardRestaurant();
-createCardRestaurant();
-
-cartButton.addEventListener("click", toggleModal);
-close.addEventListener("click", toggleModal);
-cardsRestaurants.addEventListener("click", openGoods);
-logo.addEventListener("click", function () {
-  containerPromo.classList.remove("hide");
-  restaurants.classList.remove("hide");
-  menu.classList.add("hide");
-});
-
-new Swiper(".container-promo", {
-  loop: true,
-  autoplay: {
-    delay: 3000,
-  },
-  slidePerView: 1,
-  sliderPerColumn: 1,
-});
-
-
+init();
 //формат текста shift+alt+F
+
+
