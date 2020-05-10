@@ -1,7 +1,7 @@
-# demo websites
+# Demo websites
 
 ## работа
-[delivery-food](https://milafabio.github.io/delivery-food)
+[website delivery-food](https://milafabio.github.io/delivery-food)
 
 ## Полезные ссылки
 
