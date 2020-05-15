@@ -1,4 +1,4 @@
-# Demo websites
+# Delivery Foods 
 
 ## работа
 [website delivery-food](https://milafabio.github.io/delivery-food)
@@ -11,6 +11,9 @@
 - [var, let, const](https://habr.com/ru/company/ruvds/blog/420359/)
 - [Функции](https://learn.javascript.ru/function-basics)
 - [Условия](https://learn.javascript.ru/ifelse)
+
+
+# Квиз "Бургер мечты" на JavaScript
 
 ## Список необходимых плагинов:
 
