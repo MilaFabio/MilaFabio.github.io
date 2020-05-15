@@ -1,3 +1,5 @@
+"use strict";
+//авторизация констант
 const cartButton = document.querySelector("#cart-button");
 const modal = document.querySelector(".modal");
 const close = document.querySelector(".close");
@@ -16,20 +18,31 @@ const menu = document.querySelector(".menu");
 const logo = document.querySelector(".logo");
 const cardsMenu = document.querySelector(".cards-menu");
 
-const restaurantTitle = document.querySelector('.restaurant-title');
-const rating = document.querySelector('.rating');
-const minPrice = document.querySelector('.price');
-const category = document.querySelector('.category');
-const inputSearch = document.querySelector('.input-search');
-const modalBody = document.querySelector('.modal-body');
+const restaurantTitle = document.querySelector(".restaurant-title");
+const rating = document.querySelector(".rating");
+const minPrice = document.querySelector(".price");
+const category = document.querySelector(".category");
+const inputSearch = document.querySelector(".input-search");
+const modalBody = document.querySelector(".modal-body");
 
-const modalBdy = document.querySelector(".modal-body");
-const modalPrice = document.querySelector('.modal-pricetag');
-const buttonClearCart = document.querySelector('.clear-cart');
+const modalPrice = document.querySelector(".modal-pricetag");
+const buttonClearCart = document.querySelector(".clear-cart");
 
 let login = localStorage.getItem("gloDelivery");
 
 const cart = [];
+
+const loadCart = function () {
+  if (localStorage.getItem(login)) {
+    JSON.parse(localStorage.getItem(login)).forEach(function (item) {
+      cart.push(item);
+    });
+  }
+};
+
+const saveCart = function () {
+  localStorage.setItem(login, JSON.stringify(cart));
+};
 
 const getData = async function (url) {
   const response = await fetch(url);
@@ -54,6 +67,12 @@ const toggleModal = function () {
   modal.classList.toggle("is-open");
 };
 
+function returnMain() {
+  containerPromo.classList.remove("hide");
+  restaurants.classList.remove("hide");
+  menu.classList.add("hide");
+}
+
 /** очищаем поля ввода */
 
 function toggleModalAuth() {
@@ -65,12 +84,14 @@ function autorized() {
   function logOut() {
     login = null;
     localStorage.removeItem("gloDelivery"); //очистить хранение логина
-    checkAuth(); // проверка авторизации пользователя
     buttonAuth.style.display = "";
     userName.style.display = "";
     buttonOut.style.display = "";
     cartButton.style.display = "";
     buttonOut.removeEventListener("click", logOut);
+
+    checkAuth(); // проверка авторизации пользователя
+    returnMain();
   }
   console.log("Авторизован:", login);
   userName.textContent = login;
@@ -157,6 +178,7 @@ function createCardRestaurant({
 }
 
 function createCardGood({ id, name, description, price, image }) {
+  // карточки продукто ресторана 
   //const { id, name, description, price, image } = goods;
   const card = document.createElement("div");
   card.className = "card";
@@ -188,7 +210,7 @@ function openGoods(event) {
   const restaurant = target.closest(".card-restaurant");
   if (restaurant) {
     if (login) {
-      cardsMenu.textContent = "";
+      cardsMenu.textContent = '';
       containerPromo.classList.add("hide");
       restaurants.classList.add("hide");
       menu.classList.remove("hide");
@@ -196,7 +218,7 @@ function openGoods(event) {
       getData(`./db/${restaurant.dataset.products}`).then(function (data) {
         data.forEach(createCardGood);
       });
-    } else {
+    } else { //если не авторизован, то вызываем модальное окно
       toggleModalAuth();
     }
   }
@@ -213,25 +235,24 @@ function addToCart(event) {
     const food = cart.find(function (item) {
       return item.id === id;
     });
-if (food) {
-  food.count += 1;
-} else {
-  cart.push({
-    id,
-    cart,
-    title,
-    cost,
-    count: 1,
-  });
-}
-    
+    if (food) {
+      food.count += 1;
+    } else {
+      cart.push({
+        id,
+        title,
+        cost,
+        count: 1,
+      });
+    }
   }
+  saveCart();
   console.log(cart);
 }
 
 function renderCart() {
   modalBody.textContent = "";
-  cart.forEach(function({ id, title, cost, count }) {
+  cart.forEach(function ({ id, title, cost, count }) {
     const itemCart = `
         <div class="food-row">
             <span class="food-name">${title}</span>
@@ -243,57 +264,124 @@ function renderCart() {
             </div>
           </div>
     `;
-  
-    modalBody.insertAdjacentHTML('beforebegin', itemCart)
+
+    modalBody.insertAdjacentHTML("afterbegin", itemCart);
   });
 
-const totalPrice  = cart.reduce(function(result, item) { 
-	return result + (parseFloat(item.cost) * item.count);
-	 }, 0);
+  const totalPrice = cart.reduce(function (result, item) {
+    return result + parseFloat(item.cost) * item.count;
+  }, 0);
 
-	modalPrice.textContent = totalPrice + '₽';
+  modalPrice.textContent = totalPrice + "₽";
 }
 
 function changeCount(event) {
+  const target = event.target;
 
-	const target = event.target;
+  if (target.classList.contains("counter-button")) {
+    const food = cart.find(function (item) {
+      return item.id === target.dataset.id;
+    });
 
-	if(target.classList.contains('counter-button')) {
-		const food = cart.find(function(item){
-			return item.id === target.dataset.id;
-		});
-
-	if (target.classList.contains('counter-minus')) {
-		food.count--;
-		if(food.count === 0) {
-			cart.splice(cart.indexOf(food), 1);
-		}
-	};
-	if (target.classList.contains('counter-plus'))food.count++;
-		renderCart();
-	}
-	saveCart();
+    if (target.classList.contains("counter-minus")) {
+      food.count--;
+      if (food.count === 0) {
+        cart.splice(cart.indexOf(food), 1);
+      }
+    }
+    if (target.classList.contains("counter-plus")) food.count++;
+    renderCart();
+  }
+  saveCart();
 }
 
 function init() {
-  getData("./db/partners.json").then(function (data) {
+  getData("./db/partners.json").then((data) => {
     data.forEach(createCardRestaurant);
   });
 
   checkAuth();
 
-  cartButton.addEventListener("click", function(){
+  cartButton.addEventListener("click", renderCart);
+  cartButton.addEventListener("click", toggleModal);
+
+  buttonClearCart.addEventListener("click", () => {
+    cart.length = 0;
     renderCart();
-    toggleModal(); 
+    localStorage.removeItem('cart');
   });
+
+  modalBody.addEventListener("click", changeCount);
   cardsMenu.addEventListener("click", addToCart);
-  close.addEventListener("click", toggleModal);
-  cardsRestaurants.addEventListener("click", openGoods);
+  close.addEventListener("click", toggleModal); // закрытие окна авторизации
+  cardsRestaurants.addEventListener("click", openGoods); //перейти в определенный ресторан
   logo.addEventListener("click", function () {
     containerPromo.classList.remove("hide");
     restaurants.classList.remove("hide");
     menu.classList.add("hide");
   });
+
+  inputSearch.addEventListener('keydown', function(event) {
+
+		if (event.keyCode === 13) {
+			const target = event.target;
+			
+			const value = target.value.toLowerCase().trim();
+
+			target.value = '';
+
+			if (!value || value.length < 3) {
+				target.style.backgroundColor = 'tomato';
+				setTimeout(function(){
+					target.style.backgroundColor = '';
+				}, 2000);
+				return;
+			}
+
+			const goods = [];
+			
+			getData('./db/partners.json')
+				.then(function(data) {
+					
+					const products = data.map(function(item){
+						return item.products;
+					});
+
+
+					products.forEach(function(product){
+						getData(`./db/${product}`)
+							.then(function(data){
+								
+							goods.push(...data);
+
+							const searchGoods = goods.filter(function(item) {
+							return item.name.toLowerCase().includes(value)
+							})
+
+							console.log(searchGoods);
+								
+							cardsMenu.textContent = '';
+
+								containerPromo.classList.add('hide');
+								restaurants.classList.add('hide');
+								menu.classList.remove('hide');
+
+								restaurantTitle.textContent = 'Результат поиска';
+								rating.textContent = '';
+								minPrice.textContent = '';
+								category.textContent = '';
+
+								return searchGoods;
+							})
+							.then(function(data){
+								data.forEach(createCardGood);
+							})
+					})
+					
+				});
+		}
+		
+	});
 
   new Swiper(".container-promo", {
     loop: true,
