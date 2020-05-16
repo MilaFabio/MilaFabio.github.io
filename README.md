@@ -1,14 +1,14 @@
-# JS byntycbот Glo Acaddemн
+# JS интенсивы от Glo Acaddemн
 
 ## работа website 
-# Delivery Foods 
+## Delivery Foods 
 [delivery-food.io](https://milafabio.github.io/delivery-food)
 
-# калькулятор бомашний бюджет  на JavaScript (самостоятельно)
+## калькулятор бомашний бюджет  на JavaScript (самостоятельно)
 
  [moneyCalc.io](https://milafabio.github.io/moneyCalc)
 
-# Квиз "Бургер мечты" на JavaScript
+## Квиз "Бургер мечты" на JavaScript
 
 [QuizBurger.io](https://milafabio.github.io/QuizBurger)
 
