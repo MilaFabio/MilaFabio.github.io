@@ -1,4 +1,4 @@
-# JS интенсивы от Glo Acaddemн
+# JS интенсивы от Glo Academy
 
 ## работа website 
 ### Delivery Foods 
