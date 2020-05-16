@@ -1,19 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
 html {
     box-sizing: border-box;
 }
-
 :root {
     --main-color: #242424;
 }
-
 *,
 *::before,
 *::after {
     box-sizing: inherit;
 }
-
 body {
     margin: 0;
     background-color: #f9f9f9;
@@ -25,26 +21,21 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
-
 
 img {
     max-width: 100%;
     height: auto;
 }
-
 a {
     text-decoration: none;
     color: inherit;
 }
-
 ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
-
 h1,
 h2,
 h3,
@@ -54,78 +45,62 @@ p {
     margin: 0;
     text-align: center;
 }
-
 .container {
     margin: 0 auto;
     width: 400px;
 }
 
-
 h1, h2, h3 {
     line-height: 1.5;
     
 }
-
 h4 {
     text-transform: uppercase;
 }
-
 main {
     margin-top: 30px;
 }
-
 .total {
     padding: 20px;
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 25px;
 }
-
 .total__balance{
     font-size: 28px;
     font-weight: bold;
 }
-
 .total__header{
     border-bottom: 1px solid #ccc;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
 .total__main{
     display: flex;
     justify-content: space-between;
 }
-
 .total__main-item {
     flex: 1;
     text-align: center;
     padding-top: 15px;
-
 }
-
 .total__main-item:first-child{
     border-right: 1px solid #ccc;
 }
-
 .total__money {
     font-size: 24px;
     line-height: 1.5;
 }
-
 .total__money-expenses {
     color: tomato;
 }
-
 .total__money-income {
     color: darkgreen;
 }
-
 .history {
     margin-top: 40px;
 }
-
 .history__item {
     align-items: center;
     background-color: #fff;
@@ -141,23 +116,19 @@ main {
     margin: 10px 0;
     line-height: 25px;
 }
-
 .history__item-plus{
     border-left-color:  darkgreen;
     border-right-color: darkgreen;
 }
-
 .history__item-minus{
     border-left-color:  tomato;
     border-right-color: tomato;
 }
-
 .history__money{
     flex: 1;
     text-align: right;
     padding-right: 10px;
 }
-
 .history_delete{
     background-color: transparent;
     color: red;
@@ -168,11 +139,9 @@ main {
     transition: opacity 0.3s ease;
     cursor: pointer;
 }
-
 .history__item:hover .history_delete{
     opacity: 1;
 }
-
 .operation {
     margin-top: 40px;
     margin-bottom: 40px;
@@ -180,7 +149,6 @@ main {
     border-radius: 25px;
     padding: 15px 15px;
 }
-
 
 .operation__fields{
     display: block;
@@ -192,11 +160,9 @@ main {
     width: 100%;
     outline: transparent;
 }
-
 .operation__fields:focus{
     border: 1px solid darkorange;
 }
-
 .operation__add {
     background-color: darkorange;
     border-width: 2px;
@@ -211,9 +177,7 @@ main {
     margin: 15px 0;
     cursor: pointer;
 }
-
 .operation__add:hover {
     background-color: white;
     color: darkorange;
 }
-
