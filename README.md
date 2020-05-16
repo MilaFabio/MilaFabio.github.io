@@ -16,6 +16,7 @@
 - [var, let, const](https://habr.com/ru/company/ruvds/blog/420359/)
 - [Функции](https://learn.javascript.ru/function-basics)
 - [Условия](https://learn.javascript.ru/ifelse)
+- [Циклы](https://learn.javascript.ru/while-for#tsikl-while)
 
 
 # Квиз "Бургер мечты" на JavaScript
