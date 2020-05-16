@@ -1,11 +1,16 @@
-# Delivery Foods 
+# JS byntycbот Glo Acaddemн
 
 ## работа website 
-1. [delivery-food.io](https://milafabio.github.io/delivery-food)
+# Delivery Foods 
+[delivery-food.io](https://milafabio.github.io/delivery-food)
 
-2. [moneyCalc.io](https://milafabio.github.io/moneyCalc)
+# калькулятор бомашний бюджет  на JavaScript (самостоятельно)
 
-3. [QuizBurger.io](https://milafabio.github.io/QuizBurger)
+ [moneyCalc.io](https://milafabio.github.io/moneyCalc)
+
+# Квиз "Бургер мечты" на JavaScript
+
+[QuizBurger.io](https://milafabio.github.io/QuizBurger)
 
 
 ## Полезные ссылки
@@ -18,8 +23,6 @@
 - [Условия](https://learn.javascript.ru/ifelse)
 - [Циклы](https://learn.javascript.ru/while-for#tsikl-while)
 
-
-# Квиз "Бургер мечты" на JavaScript
 
 ## Список необходимых плагинов:
 
