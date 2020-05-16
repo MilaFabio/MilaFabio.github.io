@@ -5,7 +5,7 @@
 
 [moneyCalc](https://milafabio.github.io/moneyCalc)
 
-[QuizBurger](https://milafabio.github.io/)
+[QuizBurger](https://milafabio.github.io/QuizBurger)
 
 
 ## Полезные ссылки
