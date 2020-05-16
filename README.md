@@ -1,11 +1,11 @@
 # Delivery Foods 
 
 ## работа website 
-[delivery-food](https://milafabio.github.io/delivery-food)
+1. [delivery-food.io](https://milafabio.github.io/delivery-food)
 
-[moneyCalc](https://milafabio.github.io/moneyCalc)
+2. [moneyCalc.io](https://milafabio.github.io/moneyCalc)
 
-[QuizBurger](https://milafabio.github.io/QuizBurger)
+3. [QuizBurger.io](https://milafabio.github.io/QuizBurger)
 
 
 ## Полезные ссылки
