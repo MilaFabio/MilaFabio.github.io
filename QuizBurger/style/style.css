@@ -1,10 +1,19 @@
 body {
     background: #E0FFFF;
-    font-family: fantasy, sans-serif;
+   /* font-family: fantasy, sans-serif; */
+ 
 }
 
 li {
     list-style-type: none;
+}
+
+h1 {
+    font-family: 'Balsamiq Sans', cursive;
+}
+
+h2 {
+    font-family: 'Amatic SC', cursive;
 }
 
 .answers-item label {
@@ -47,6 +56,7 @@ label span {
     color: #3CB371;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: black;
+    font-family: 'Balsamiq Sans', cursive;
 }
 
 
@@ -132,4 +142,9 @@ label span {
 }
 .burger.active span:nth-child(3) {
     transform: rotate(-45deg) translate(4px, -9px);
+}
+
+.btnText{
+    /* font-family: 'Oswald', sans-serif; */
+    font-family: 'Rubik Mono One', sans-serif;
 }
