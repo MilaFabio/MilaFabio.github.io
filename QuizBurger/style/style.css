@@ -49,19 +49,20 @@ label span {
     -webkit-text-stroke-color: black;
 }
 
-.webp .content {
+
+.no-webp .content {
+    width: 300px;
+    height: 300px;
+    background: url('../image/burger.png') center no-repeat;
+    background-size: 115%;
+ 
+}
+  
+  .webp .content {
     width: 300px;
     height: 300px;
     background: url('../image/burger-4026165_960_720.webp') center no-repeat;
-    
     background-size: 115%;
-}
-
-.no-webp .content{
-     width: 300px;
-    height: 300px;    
-    background-size: 115%;
-    background: url('../image/burger.png') center no-repeat;
 }
 
 .modal {
