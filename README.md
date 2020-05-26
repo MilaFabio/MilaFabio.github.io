@@ -12,6 +12,9 @@
 
 [QuizBurger.io](https://milafabio.github.io/QuizBurger)
 
+### Воркшоп Netclick на JS
+[NetclickJS.io](https://milafabio.github.io/NetclickJS/)
+
 
 ## Полезные ссылки
 
