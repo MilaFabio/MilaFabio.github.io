@@ -1,0 +1,1 @@
+Воркшоп Netclick на JS
