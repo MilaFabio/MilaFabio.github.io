@@ -1,9 +1,25 @@
 //menu
-const leftmenu = document.querySelector(".left-menu");
-const hamburger = document.querySelector(".hamburger");
-//const main = document.querySelector('main');
-const tvShowsList = document.querySelector(".tv-shows__list");
-const modal = document.querySelector(".modal");
+const leftmenu = document.querySelector(".left-menu"),
+    hamburger = document.querySelector(".hamburger"),
+    //const main = document.querySelector('main');
+    tvShowsList = document.querySelector(".tv-shows__list"),
+    modal = document.querySelector(".modal"),
+    tvShows = document.querySelector(".tv-shows"),
+    tvCardImg = document.querySelector('.tv-card__img'),
+    modalTitle = document.querySelector('.modal__title'),
+    genresList = document.querySelector('.genres-list'),
+    rating = document.querySelector('.rating'),
+    description = document.querySelector('.description'),
+    modalLink = document.querySelector('.modal__link'),
+    searchForm = document.querySelector('.seach__form'),
+    searchFormInput = document.querySelector('.seach__form-input'),
+    preloader = document.querySelector('.preloader'),
+    dropdown = document.querySelector('.dropdown'),
+    tvShowsHead = document.querySelector('.tv-shows__head'),
+    posterWrapper = document.querySelector('.poster__wrapper');
+
+const loading = document.createElement('div');
+loading.className = 'loading';
 
 
 const API_KEY = '378351d23fe83be06463f1c187a12b01';
@@ -69,9 +85,26 @@ tvShowsList.addEventListener("click", (event) => {
     const target = event.target;
     const card = target.closest(".tv-card");
     if (card) {
-        document.body.style.overflow = "hidden";
-        modal.classList.remove("hide");
-        modal.style.background = "rgba(28, 174, 218, 0.8)";
+
+        new DBService().getTestCard()
+            .then(response => {
+                console.log('response: ', response);
+                tvCardImg.scr = IMG_URL + response.poster_path;
+                modalTitle.textContent = response.name;
+                // genresList.innerHTML = response.genres.reduce((acc, item) => { `${acc} <li>${item.name}</li>` }, '');
+                response.genres.forEach(item => {
+                    genresList.innerHTML += `<li>${item.name}</li>`;
+                })
+                rating.vote_average = response.rating;
+                description.overview = response.description;
+                //modalLink = response.modalLink;
+            })
+            .then(() => {
+                document.body.style.overflow = "hidden";
+                modal.classList.remove("hide");
+                modal.style.background = "rgba(28, 174, 218, 0.8)";
+            });
+
     }
 });
 
@@ -119,16 +152,30 @@ class DBService {
     getTestData() {
         return this.getData("test.json");
     };
+
+    getTestCard() {
+        return this.getData("card.json");
+    };
 };
 
 const renderCard = (response) => {
+    tvShowsList.textContent = '';
     console.log('response: ', response);
+
+    if (!response.total_results) {
+        loading.remove();
+        tvShowsHead.textContent = 'По вашему запросу ничего не найдено';
+        tvShowsHead.style.cssText = 'color: red';
+        return; //остановим код на этой строке
+    }
+
     response.results.forEach(item => {
         const {
             backdrop_path: backdrop,
             name: title,
             poster_path: poster,
-            vote_average: vote
+            vote_average: vote,
+            id
         } = item;
         const posterIMG = poster ? IMG_URL + poster : DEFAULT_IMG;
         const backdropIMG = backdrop ? IMG_URL + backdrop : '';
@@ -142,14 +189,17 @@ const renderCard = (response) => {
                             ${voteElem}
                             <img class="tv-card__img" src="${posterIMG}" 
                             data-backdrop="${backdropIMG}" 
-                            alt="${title}">
+                            alt="${title}" />
                             <h4 class="tv-card__head">${title}</h4>
                         </a>
         `;
-
+        loading.remove();
         tvShowsList.prepend(card);
     });
 
 };
 
-new DBService().getTestData().then(renderCard);
+{
+    tvShows.append(loading);
+    new DBService().getTestData().then(renderCard);
+}
