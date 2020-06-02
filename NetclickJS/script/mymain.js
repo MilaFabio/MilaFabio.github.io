@@ -102,7 +102,8 @@ tvShowsList.addEventListener("click", (event) => {
             .then(() => {
                 document.body.style.overflow = "hidden";
                 modal.classList.remove("hide");
-                modal.style.background = "rgba(28, 174, 218, 0.8)";
+                modal.style.backgroundImage = 'linear-gradient(135deg, rgba(166, 0, 255, 0.2), rgba(0, 255, 221, 0.99))';
+                //.background = "rgba(28, 174, 218, 0.8)";
             });
 
     }
