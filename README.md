@@ -15,6 +15,10 @@
 ### Воркшоп Netclick на JS
 [NetclickJS.io](https://milafabio.github.io/NetclickJS/)
 
+### Интенсив "Верстаем соцсеть Дистанция на HTML и CSS Glo Academy
+
+[соцсеть Дистанция](https://milafabio.github.io/distancebook/)
+
 
 ## Полезные ссылки
 
