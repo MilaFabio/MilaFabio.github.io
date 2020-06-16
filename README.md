@@ -19,6 +19,9 @@
 
 [соцсеть Дистанция](https://milafabio.github.io/distancebook/)
 
+### Интенсив по вёрстке "Промосайт к фильму «Охотники за привидениями»"
+[Ghostbusters.io](https://milafabio.github.io/Ghostbusters/)
+
 
 ## Полезные ссылки
 
@@ -30,6 +33,16 @@
 - [Условия](https://learn.javascript.ru/ifelse)
 - [Циклы](https://learn.javascript.ru/while-for#tsikl-while)
 
+## HTML CSS
+
+– Библиотека Normalize CSS necolas.github.io/normalize.css
+– Бесплатные шрифты от Google fonts.google.com
+
+– webref.ru/html — подробный справочник по HTML
+– webref.ru/css — подробный справочник по CSS 
+– html5book.ru — справочник и статьи на русском 
+– htmlreference.io — справочник на английском
+– developer.mozilla.org/ru — сайт веб-документации
 
 ## Список необходимых плагинов:
 
