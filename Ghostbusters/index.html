@@ -3,30 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <title>Охотники за привидениями: Наследники</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/normalize.css">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/normalize.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 <header class="header">
     <div class="logo">
-        <svg width="66" height="24" viewBox="0 0 66 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M14.1182 14.5039H5.82715V23H0.685547V1.67188H14.9531V5.6416H5.82715V10.5488H14.1182V14.5039ZM22.0723 23H17.1211V7.15039H22.0723V23ZM16.8281 3.06348C16.8281 2.36035 17.082 1.78418 17.5898 1.33496C18.0977 0.885742 18.7568 0.661133 19.5674 0.661133C20.3779 0.661133 21.0371 0.885742 21.5449 1.33496C22.0527 1.78418 22.3066 2.36035 22.3066 3.06348C22.3066 3.7666 22.0527 4.34277 21.5449 4.79199C21.0371 5.24121 20.3779 5.46582 19.5674 5.46582C18.7568 5.46582 18.0977 5.24121 17.5898 4.79199C17.082 4.34277 16.8281 3.7666 16.8281 3.06348ZM30.334 23H25.3828V0.5H30.334V23ZM38.0537 7.15039L38.2148 9.01074C39.3379 7.5752 40.8467 6.85742 42.7412 6.85742C44.7432 6.85742 46.0957 7.65332 46.7988 9.24512C47.873 7.65332 49.4258 6.85742 51.457 6.85742C54.6699 6.85742 56.3203 8.80078 56.4082 12.6875V23H51.457V12.9951C51.457 12.1846 51.3203 11.5938 51.0469 11.2227C50.7734 10.8516 50.2754 10.666 49.5527 10.666C48.5762 10.666 47.8486 11.1006 47.3701 11.9697L47.3848 12.1748V23H42.4336V13.0244C42.4336 12.1943 42.3018 11.5938 42.0381 11.2227C41.7744 10.8516 41.2715 10.666 40.5293 10.666C39.582 10.666 38.8594 11.1006 38.3613 11.9697V23H33.4248V7.15039H38.0537ZM62.2822 18.21C63.0635 18.21 63.7129 18.4443 64.2305 18.9131C64.748 19.3721 65.0068 19.9629 65.0068 20.6855C65.0068 21.4082 64.748 22.0039 64.2305 22.4727C63.7129 22.9316 63.0635 23.1611 62.2822 23.1611C61.4912 23.1611 60.8369 22.9268 60.3193 22.458C59.8115 21.9893 59.5576 21.3984 59.5576 20.6855C59.5576 19.9727 59.8115 19.3818 60.3193 18.9131C60.8369 18.4443 61.4912 18.21 62.2822 18.21Z" fill="#5671F6"/>
+        <svg fill="none" height="24" viewBox="0 0 66 24" width="66" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.1182 14.5039H5.82715V23H0.685547V1.67188H14.9531V5.6416H5.82715V10.5488H14.1182V14.5039ZM22.0723 23H17.1211V7.15039H22.0723V23ZM16.8281 3.06348C16.8281 2.36035 17.082 1.78418 17.5898 1.33496C18.0977 0.885742 18.7568 0.661133 19.5674 0.661133C20.3779 0.661133 21.0371 0.885742 21.5449 1.33496C22.0527 1.78418 22.3066 2.36035 22.3066 3.06348C22.3066 3.7666 22.0527 4.34277 21.5449 4.79199C21.0371 5.24121 20.3779 5.46582 19.5674 5.46582C18.7568 5.46582 18.0977 5.24121 17.5898 4.79199C17.082 4.34277 16.8281 3.7666 16.8281 3.06348ZM30.334 23H25.3828V0.5H30.334V23ZM38.0537 7.15039L38.2148 9.01074C39.3379 7.5752 40.8467 6.85742 42.7412 6.85742C44.7432 6.85742 46.0957 7.65332 46.7988 9.24512C47.873 7.65332 49.4258 6.85742 51.457 6.85742C54.6699 6.85742 56.3203 8.80078 56.4082 12.6875V23H51.457V12.9951C51.457 12.1846 51.3203 11.5938 51.0469 11.2227C50.7734 10.8516 50.2754 10.666 49.5527 10.666C48.5762 10.666 47.8486 11.1006 47.3701 11.9697L47.3848 12.1748V23H42.4336V13.0244C42.4336 12.1943 42.3018 11.5938 42.0381 11.2227C41.7744 10.8516 41.2715 10.666 40.5293 10.666C39.582 10.666 38.8594 11.1006 38.3613 11.9697V23H33.4248V7.15039H38.0537ZM62.2822 18.21C63.0635 18.21 63.7129 18.4443 64.2305 18.9131C64.748 19.3721 65.0068 19.9629 65.0068 20.6855C65.0068 21.4082 64.748 22.0039 64.2305 22.4727C63.7129 22.9316 63.0635 23.1611 62.2822 23.1611C61.4912 23.1611 60.8369 22.9268 60.3193 22.458C59.8115 21.9893 59.5576 21.3984 59.5576 20.6855C59.5576 19.9727 59.8115 19.3818 60.3193 18.9131C60.8369 18.4443 61.4912 18.21 62.2822 18.21Z"
+                  fill="#5671F6"/>
         </svg>
 
     </div>
     <div class="line"></div>
-    <input type="text" class="search-input" placeholder="Поиск по фильмам..."/>
+    <input class="search-input" placeholder="Поиск по фильмам..." type="text"/>
     <nav class="navigation">
-        <a href="#" class="navigation-link">Фильмы</a>
-        <a href="#" class="navigation-link">ТВ</a>
-        <a href="#" class="navigation-link">Новости</a>
-        <a href="#" class="navigation-link">О сервисе</a>
-     </nav>
+        <a class="navigation-link" href="#">Фильмы</a>
+        <a class="navigation-link" href="#">ТВ</a>
+        <a class="navigation-link" href="#">Новости</a>
+        <a class="navigation-link" href="#">О сервисе</a>
+    </nav>
     <div class="button-group">
         <button class="button sign-up">Регистрация</button>
         <button class="button sign-in">Войти</button>
     </div>
 </header>
+<section class="film">
+    <div class="container">
+        <div class="film-wrapper">
+            <div class="film-trailer">
+<!--                <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">-->
+                        <img decoder=async alt="постер фильма охотники за привидениями" class="poster" src="img/poster.jpg" />
+<!--                </div>-->
+                <button class="trailer-button">
+                    <img alt="play" class="trailer-button-icon" src="img/play.svg" />
+                    <span class="trailer-button-text">Посмотреть трейлер</span>
+                </button>
+            </div>
+            <!-- /.film-trailer -->
+            <div class="film-text">
+                <h1 class="film-title">Охотники за привидениями:<br/>Наследники</h1>
+                <span class="film-subtitle">Ghostbusters: Afterlife</span>
+                <p class="film-description">Мать-одиночка с двумя детьми-подростками селится на старой ферме в&nbsp;Оклахоме,
+                    полученной в наследство от отца, которого она не знала. Дети пытаются больше узнать о своем деде и
+                    находят автомобиль Ecto-1, принадлежавший знаменитым охотникам за привидениями.</p>
+                <div class="about-film">
+                    <div class="left-side">
+                        <span class="about-text">
+            <strong class="about-text-bold">Режиссер</strong>
+            <span class="about-text-reg">Джейсон Райтман</span>
+        </span>
+                        <span class="about-text">
+            <strong class="about-text-bold">Сценарий</strong>
+            <span class="about-text-reg">Дэн Эйкройд</span>
+        </span>
+                        <span class="about-text">
+            <strong class="about-text-bold">Премьера</strong>
+            <span class="about-text-reg">05.03.2021 (РФ)</span>
+        </span>
+                    </div>
+                    <div class="rigth-SIDE">
+                        <span class="about-text">
+            <strong class="about-text-bold">Бюджет</strong>
+            <span class="about-text-reg">1 000 000 $</span>
+        </span>
+                        <span class="about-text">
+            <strong class="about-text-bold">Кинопрокат</strong>
+            <span class="about-text-reg">SPPR</span>
+        </span>
+                        <span class="about-text">
+            <strong class="about-text-bold">Премьера</strong>
+            <span class="about-text-reg">05.03.2021 (Мир)</span>
+        </span>
+                    </div>
+                </div>
+                <!-- / .about-film-->
+                <div class="rating">
+                    <div class="film-rating-counter">92%</div>
+                    <div class="film-rating-description">
+                        <h3 class="rating-title">Рейтинг зрителей</h3>
+                        <span class="rating-text">Средняя оценка: <strong class="rating-text-bold">4,5/5</strong></span>
+                        <span class="rating-text">Всего голосов: <strong class="rating-text-bold">4 350</strong></span>
+                    </div>
+
+                </div>
+                <!-- /.rating -->
+            </div>
+            <!-- /.film-text -->
+
+        </div>
+        <!-- /.film-wrapper -->
+    </div>
+    <!-- /.container -->
+</section>
+<!-- /.film -->
+<section class="cast">
+    <div class="container">
+        <div class="tabs">
+            <h2 class="section-title active">Актеры</h2>
+            <h2 class="section-title">Создатели</h2>
+        </div>
+        <div class="tabs-content">
+            <div class="card"><img src="img/actors/cast1.png" alt="Кэрри Кун" class="avatar">
+                <div class="card-text"><h3 class="name">Кэрри Кун</h3>
+                    <span class="en-name">Carrie Coon</span>
+                </div>
+            </div><!--/.card1-->
+            <div class="card"><img src="img/actors/cast2.png" alt="Билл Мюррей" class="avatar">
+                <div class="card-text">
+                    <h3 class="name">Билл Мюррей</h3>
+                    <span class="en-name">Bill Murray</span>
+                </div>
+            </div><!--/.card2-->
+            <div class="card"><img src="img/actors/cast3.png" alt="Пол Радд" class="avatar">
+                <div class="card-text">
+                    <h3 class="name">Пол Радд</h3>
+                    <span class="en-name">Paul Rudd</span>
+                </div>
+            </div><!--/.card3-->
+            <div class="card"><img src="img/actors/cast4.png" alt="Энни Поттс" class="avatar">
+                <div class="card-text">
+                    <h3 class="name">Энни Поттс</h3>
+                    <span class="en-name">Annie Potts</span>
+                </div>
+            </div><!--/.card4-->
+            <div class="card"><img src="img/actors/cast5.png" alt="МакКенна Грейс" class="avatar">
+                <div class="card-text">
+                    <h3 class="name">МакКенна Грейс</h3>
+                    <span class="en-name">Mckenna Grace</span>
+                </div>
+            </div><!--/.card5-->
+            <div class="card"><img src="img/actors/cast6.png" alt="Дэн Эйкройд" class="avatar">
+                <div class="card-text">
+                    <h3 class="name">Дэн Эйкройд</h3>
+                    <span class="en-name">Dan Aykroyd</span>
+                </div>
+            </div><!--/.card6-->
+            <div class="card"><img src="img/actors/cast7.png" alt="Эрни Хадсон" class="avatar">
+                <div class="card-text">
+                    <h3 class="name">Эрни Хадсон</h3>
+                    <span class="en-name">Ernie Hudson</span>
+                </div>
+            </div><!--/.card7-->
+            <div class="card"><img src="img/actors/cast8.png" alt="Финн Вулфард" class="avatar">
+                <div class="card-text">
+                    <h3 class="name">Финн Вулфард</h3>
+                    <span class="en-name">Finn Wolfhard</span>
+                </div>
+            </div><!--/.card8-->
+        </div>
+        <!-- /.tabs-content -->
+    </div>
+</section>
+<!-- /.cast -->
+<section class="news">
+    <div class="container">
+        <h2>Новости по теме</h2>
+    </div>
+</section>
+<!-- /.news -->
 </body>
 </html>
