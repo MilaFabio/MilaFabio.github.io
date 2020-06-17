@@ -44,6 +44,7 @@
 – htmlreference.io — справочник на английском
 – developer.mozilla.org/ru — сайт веб-документации
 
+
 ## Список необходимых плагинов:
 
 - [Material Theme](https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-material-theme)
