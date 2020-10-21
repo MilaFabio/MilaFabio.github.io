@@ -22,6 +22,8 @@
 ### Интенсив по вёрстке "Промосайт к фильму «Охотники за привидениями»"
 [Ghostbusters.io](https://milafabio.github.io/Ghostbusters/)
 
+### Интенсив по вёрстке "my Pikabu"
+[pikadu.io](https://milafabio.github.io/pikadu/)
 
 ## Полезные ссылки
 
